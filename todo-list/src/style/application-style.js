@@ -13,23 +13,15 @@ export const todoStyles = makeStyles((theme) => ({
     },
     searchBox: {
         fontSize: "20px",
+        paddingLeft: "30px",
     },
     sortImg: {
         width: "70px",
         height: "56px",
         padding: "0px",
     },
-    textField: {
-        marginLeft: theme.spacing(1),    
-        marginRight: theme.spacing(1),    
-        "& label.MuiInputLabel-outlined.MuiInputLabel-shrink": {    
-          transform: "translate(14px, -6px) scale(0.75)",    
-        },    
-        "& label.MuiInputLabel-outlined": {    
-          transform: "translate(10px, 10px) scale(1)",    
-        },    
-        "& input.MuiOutlinedInput-input": {    
-          padding: "7px 7px 7px 7px",    
-        },    
-      },
+    table:  {width: "98%", border:"solid", borderColor: "gray", borderWidth: "7px"},
+    tableRow: {borderBottom: "solid", borderColor: "darkgray", borderWidth: "2px", fontSize: "20px"},
+    "& .css-rqglhn-MuiTable-root": { width: "98%" }
+
 }));

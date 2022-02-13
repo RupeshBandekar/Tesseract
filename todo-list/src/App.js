@@ -131,7 +131,7 @@ function App() {
         <Grid container spacing={2} xs={12}>
           <Grid item xs={3}>
           </Grid>
-          <Grid item xs={6} style={{paddingLeft: "0px"}}>
+          <Grid item xs={6} style={{paddingLeft: "30px"}}>
             <p className={classes.todoListHeader}>Todo list</p>
           </Grid>
           <Grid item xs={3}>
@@ -140,7 +140,7 @@ function App() {
         <Grid container spacing={2} xs={12}>
           <Grid item xs={3}>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={5} style={{paddingLeft: "30px"}}>
             <TextField
               id="new-task"
               variant="outlined"
@@ -155,7 +155,7 @@ function App() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} style={{paddingLeft: "30px"}}>
             <img
               id="sort"
               src={sortSrc}
