@@ -1,5 +1,6 @@
 export let todotasks = [
-    { taskId: Math.random(), task: "Feed dog", isFavorite: true  },
-    { taskId: Math.random(), task: "Call parents", isFavorite: false  },
-    { taskId: Math.random(), task: "Buy a new gaming laptop", "isFavorite": false  }
+    { id: Math.random(), task: "aaaa", isFavorite: true  },
+    { id: Math.random(), task: "bbbb", isFavorite: false  },
+    { id: Math.random(), task: "cccc", "isFavorite": false  },
+    { id: Math.random(), task: "dddd", "isFavorite": true  }
 ];
