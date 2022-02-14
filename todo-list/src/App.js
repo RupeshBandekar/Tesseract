@@ -3,26 +3,17 @@ import React from "react";
 import { todotasks } from './data/todotasks';
 import TaskList from "./TaskList";
 import { todoStyles } from './style/application-style';
-import ascImg from './img/asc.png';
-import descImg from './img/desc.png';
+import sortImg from './img/sort.png';
 
 
 function App() { 
   const [tasks, setTasks] = React.useState(todotasks);
   const [newEntry, setNewEntry] = React.useState("");
   const [sortAsc, setSortAsc] = React.useState(true);
-  const [sortSrc, setSortSrc] = React.useState(descImg);
-  const [filteredTasks, setFileterdTasks] = React.useState(tasks);
+  const [filteredTasks, setFileterdTasks] = React.useState(tasks);  
+  const [confirmDelete, setConfirmDelete] = React.useState(false);
 
   const classes = todoStyles();
-
-  React.useEffect(() => {
-    if (sortAsc) {
-      setSortSrc(descImg);
-    } else {
-      setSortSrc(ascImg);
-    }
-  }, [sortAsc]);
 
   function handleOnChange(e) {
     setNewEntry(e.target.value);
@@ -127,12 +118,20 @@ function App() {
 
   return (
     <Paper>
-      <Grid container spacing={2} style={{width: "100%"}}>
+      <Grid container spacing={2}>
         <Grid container spacing={2} xs={12}>
           <Grid item xs={3}>
           </Grid>
-          <Grid item xs={6} style={{paddingLeft: "30px"}}>
-            <p className={classes.todoListHeader}>Todo list</p>
+          <Grid item xs={6}>
+            <p className={classes.todoListHeader}>
+              Todo list
+              <img
+                id="sort"
+                src={sortImg}
+                onClick={() => sortTasks()}
+                className={ sortAsc ? classes.sortImgDescending : classes.sortImgAscending}
+              />
+            </p>
           </Grid>
           <Grid item xs={3}>
           </Grid>
@@ -140,7 +139,7 @@ function App() {
         <Grid container spacing={2} xs={12}>
           <Grid item xs={3}>
           </Grid>
-          <Grid item xs={5} style={{paddingLeft: "30px"}}>
+          <Grid item xs={6} className={classes.searchBoxDiv}>
             <TextField
               id="new-task"
               variant="outlined"
@@ -148,30 +147,27 @@ function App() {
               value={newEntry}
               onChange={(e) => handleOnChange(e)}
               onKeyPress={(e) => {handleOnKeyPress(e)}}
-              className={classes.searchBox}
-              InputRef={{
-                required: true
-              }}
               fullWidth
-            />
-          </Grid>
-          <Grid item xs={1} style={{paddingLeft: "30px"}}>
-            <img
-              id="sort"
-              src={sortSrc}
-              onClick={() => sortTasks()}
-              className={classes.sortImg}
+              className={classes.searchBox}
             />
           </Grid>
           <Grid item xs={3}>
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <TaskList
-            tasks={newEntry?.length ? filteredTasks : tasks}
-            toggleFavoriteTask={(item) => toggleFavoriteTask(item)}
-            removeTask={(item) => removeTask(item)}
-          />
+        <Grid container spacing={2} xs={12}>
+          <Grid item xs={3}>
+          </Grid>
+          <Grid item xs={6}>
+            <TaskList
+              tasks={newEntry?.length ? filteredTasks : tasks}
+              toggleFavoriteTask={(item) => toggleFavoriteTask(item)}
+              removeTask={(item) => removeTask(item)}
+              confirmDelete={confirmDelete}
+              setConfirmDelete={setConfirmDelete}
+            />
+          </Grid>
+          <Grid item xs={3}>
+          </Grid>
         </Grid>
       </Grid>
     </Paper>
