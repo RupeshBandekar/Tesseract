@@ -11,7 +11,6 @@ function App() {
   const [newEntry, setNewEntry] = React.useState("");
   const [sortAsc, setSortAsc] = React.useState(true);
   const [filteredTasks, setFileterdTasks] = React.useState(tasks);  
-  const [confirmDelete, setConfirmDelete] = React.useState(false);
 
   const classes = todoStyles();
 
@@ -162,8 +161,6 @@ function App() {
               tasks={newEntry?.length ? filteredTasks : tasks}
               toggleFavoriteTask={(item) => toggleFavoriteTask(item)}
               removeTask={(item) => removeTask(item)}
-              confirmDelete={confirmDelete}
-              setConfirmDelete={setConfirmDelete}
             />
           </Grid>
           <Grid item xs={3}>
