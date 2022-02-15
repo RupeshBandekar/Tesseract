@@ -8,18 +8,25 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 export default function AlertDialog(props) {
 
-  const [open, setOpen] = React.useState(props.open);
   const [isYesClicked, setIsYesClicked] = React.useState(false);
 
+  function handleButtonClick(shouldDelete) {
+    setIsYesClicked(shouldDelete);
+    props.setOpen(false);
+  }
+
   function handleClose() {
-    console.log(isYesClicked);
+    if (isYesClicked) {
+      props.handleAlertClose(isYesClicked);
+      setIsYesClicked(false);
+    }
   }
 
   return (
     <div>
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={handleClose()}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -32,8 +39,8 @@ export default function AlertDialog(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={setIsYesClicked(true)}>Yes</Button>
-          <Button onClick={setIsYesClicked(false)} autoFocus>
+          <Button onClick={() => handleButtonClick(true)}>Yes</Button>
+          <Button onClick={() => handleButtonClick(false)} autoFocus>
             No
           </Button>
         </DialogActions>

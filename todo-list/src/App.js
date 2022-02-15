@@ -93,7 +93,7 @@ function App() {
         if (obj.id === item.id) {
           const index = list.indexOf(obj);
           if (index > -1) {
-            list.splice(obj, 1);
+            list.splice(index, 1);
           }
         }
       });
@@ -105,7 +105,7 @@ function App() {
         if (obj.id === item.id) {
           const index = list.indexOf(obj);
           if (index > -1) {
-            list.splice(obj, 1);
+            list.splice(index, 1);
           }
         }
       });
@@ -116,7 +116,7 @@ function App() {
   }
 
   return (
-    <Paper>
+    <Paper> 
       <Grid container spacing={2}>
         <Grid container spacing={2} xs={12}>
           <Grid item xs={3}>
